@@ -8,11 +8,11 @@ def migrate(ctx):
     """Bug 1291693 - Migrate the menubar to FTL, part {index}"""
 
     ctx.add_reference(
-        'browser/menubar.ftl',
+        'browser/browser/menubar.ftl',
         realpath='browser/locales/en-US/browser/menubar.ftl'
     )
     ctx.add_reference(
-        'browser/toolbar.ftl',
+        'browser/browser/toolbar.ftl',
         realpath='browser/locales/en-US/browser/toolbar.ftl'
     )
     ctx.add_reference(
@@ -25,7 +25,7 @@ def migrate(ctx):
     ctx.add_localization('browser/branding/official/brand.dtd')
     ctx.add_localization('browser/branding/official/brand.properties')
 
-    ctx.add_transforms('browser/menubar.ftl', [
+    ctx.add_transforms('browser/browser/menubar.ftl', [
         FTL.Entity(
             id=FTL.Identifier('file-menu'),
             traits=[
@@ -1795,7 +1795,7 @@ def migrate(ctx):
         ),
     ])
 
-    ctx.add_transforms('browser/toolbar.ftl', [
+    ctx.add_transforms('browser/browser/toolbar.ftl', [
         FTL.Entity(
             id=FTL.Identifier('urlbar-textbox'),
             traits=[
