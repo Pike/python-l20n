@@ -431,9 +431,14 @@ def migrate(ctx):
             traits=[
                 FTL.Member(
                     FTL.Keyword('label', 'xul'),
-                    LITERAL_FROM(
+                    REPLACE_FROM(
                         'browser/chrome/browser/browser.dtd',
                         'quitApplicationCmdMac2.label',
+                        {
+                            '&brandShorterName;': [
+                                FTL.EntityReference('brand-shorter-name')
+                            ]
+                        }
                     )
                 ),
             ]
@@ -1624,7 +1629,7 @@ def migrate(ctx):
                         'syncSignIn.label',
                         {
                             '&syncBrand.shortName.label;': [
-                                FTL.ExternalArgument('sync-brand-short-name')
+                                FTL.EntityReference('sync-brand-short-name')
                             ]
                         }
                     )
@@ -1667,7 +1672,7 @@ def migrate(ctx):
                         'syncReAuthItem.label',
                         {
                             '&syncBrand.shortName.label;': [
-                                FTL.ExternalArgument('sync-brand-short-name')
+                                FTL.EntityReference('sync-brand-short-name')
                             ]
                         }
                     )
