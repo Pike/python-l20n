@@ -3,7 +3,7 @@ import os
 import json
 import hglib
 from hglib.util import b, cmdbuilder
-from compare_locales.parser import getParser
+from compare_locales.parser import getParser, Junk
 
 
 class Blame(object):
@@ -33,6 +33,8 @@ class Blame(object):
         entities, emap = parser.parse()
         self.blame[leaf] = {}
         for e in entities:
+            if isinstance(e, Junk):
+                continue
             blines = blames[(e.value_position()[0] - 1):e.value_position(-1)[0]]
             blines.sort(key=lambda blame: -blame['date'][0])  # ignore timezone
             blame = blines[0]
