@@ -48,7 +48,8 @@ def get_plural_categories(lang):
         fallback_lang, _, _ = lang.rpartition('-')
 
         if fallback_lang == '':
-            raise RuntimeError('Unknown language: {}'.format(lang))
+            print('Unknown language: {}'.format(lang))
+            fallback_lang = 'en'
 
         return get_plural_categories(fallback_lang)
 
